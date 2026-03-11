@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# ML
+.ipynb_checkpoints/
+data/
+
+# OS
+.DS_Store
+Thumbs.db

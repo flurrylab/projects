@@ -1,0 +1,9 @@
+playwright
+python-docx
+langchain
+langchain-openai
+langchain-google-genai
+python-dotenv
+browser-use
+beautifulsoup4
+pydantic

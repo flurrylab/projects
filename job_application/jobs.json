@@ -1,0 +1,16 @@
+[
+    {
+        "title": "Senior Software Engineer",
+        "company": "Tech Corp AI",
+        "location": "Remote",
+        "link": "https://example.com/job/123",
+        "description": "We are looking for a Senior Software Engineer with strong Python and React skills. You will build scalable microservices and agentic AI systems."
+    },
+    {
+        "title": "Backend Developer",
+        "company": "DataFlow Inc",
+        "location": "Remote",
+        "link": "https://example.com/job/456",
+        "description": "Seeking a Backend Developer proficient in Node.js, Python, and cloud infrastructure. Must be able to design RESTful APIs and manage databases."
+    }
+]
