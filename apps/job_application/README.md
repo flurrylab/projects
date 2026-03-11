@@ -18,7 +18,7 @@ This system is an end-to-end automated pipeline designed to search for engineeri
 
 1.  **Clone the Repository:**
     ```powershell
-    cd C:\Users\hezix\code\funded_project\job_application
+    cd C:\Users\hezix\code\projects\apps\job_application
     ```
 
 2.  **Install Dependencies:**
