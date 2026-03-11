@@ -1,10 +1,12 @@
 import os
 from docx import Document
-from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
+from llm_factory import get_llm
 
+# Look for .env in the current directory and the root directory
 load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), '../../.env'))
 
 def extract_text_from_docx(file_path):
     """Reads a docx file and extracts its text."""
@@ -17,8 +19,8 @@ def extract_text_from_docx(file_path):
 
 def tailor_resume_content(base_resume_text, job_description):
     """Uses LLM to rewrite the resume to fit the job description on 1 page."""
-    # Using Langchain with OpenAI (fallback to Gemini if configured)
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.7) # Ensure OPENAI_API_KEY is in .env
+    # Using the factory to handle potential API key or quota issues
+    llm = get_llm(model="gpt-4o-mini", temperature=0.7)
 
     prompt = PromptTemplate.from_template(
         """
