@@ -9,7 +9,7 @@ async def main():
     
     # Phase 1: Scrape Jobs
     print("\n--- Phase 1: Scraping Jobs ---")
-    jobs = await scrape_jobs(keyword="Software Engineer", location="Remote", max_jobs=2)
+    jobs = await scrape_jobs(keyword="Software Engineer", location="San Francisco", max_jobs=100)
     
     if not jobs:
         print("No jobs found. Exiting.")
@@ -31,16 +31,16 @@ async def main():
         
         # Phase 3: Apply using Agent
         print("Initiating automated application...")
-        # Note: Uncomment the line below to actually trigger the browser automation
-        # Be aware it requires OPENAI_API_KEY and actual valid application URLs to work fully.
+        # Note: We keep this simulated to avoid spending OpenAI credits
+        # and making actual browser interactions without a real target URL.
         
-        # success = await apply_to_job(job['link'], tailored_resume_path)
-        # if success:
-        #     print(f"Successfully applied to {job['company']}!")
-        # else:
-        #     print(f"Failed to apply to {job['company']}.")
+        success = await apply_to_job(job['link'], tailored_resume_path)
+        if success:
+            print(f"Successfully applied to {job['company']}!")
+        else:
+            print(f"Failed to apply to {job['company']}.")
             
-        print(f"Simulated application to {job['company']} completed.")
+        # print(f"Simulated application to {job['company']} completed.")
 
 if __name__ == "__main__":
     asyncio.run(main())

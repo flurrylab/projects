@@ -1,11 +1,13 @@
 import asyncio
 import os
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+from llm_factory import get_llm, get_agent
 # browser-use is a framework for LLMs to control the browser
-from browser_use import Agent, Browser
+from browser_use import Browser
 
+# Look for .env in the current directory and the root directory
 load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), '../../.env'))
 
 async def apply_to_job(job_link, resume_path):
     """
@@ -15,7 +17,7 @@ async def apply_to_job(job_link, resume_path):
     print(f"Starting agent to apply for job at: {job_link}")
     
     # Configure the LLM for the agent
-    llm = ChatOpenAI(model="gpt-4o") # Requires OPENAI_API_KEY
+    llm = get_llm(model="gpt-4o")
     
     # Load user profile from env
     name = os.getenv("APPLICANT_NAME", "John Doe")
@@ -44,8 +46,8 @@ async def apply_to_job(job_link, resume_path):
     # Configure browser
     browser = Browser()
     
-    # Initialize the agent
-    agent = Agent(
+    # Initialize the agent using the factory
+    agent = get_agent(
         task=task_prompt,
         llm=llm,
         browser=browser
@@ -60,7 +62,7 @@ async def apply_to_job(job_link, resume_path):
         print(f"Agent failed to apply: {e}")
         return False
     finally:
-        await browser.close()
+        await browser.stop()
 
 if __name__ == "__main__":
     # Test execution
